@@ -19,6 +19,20 @@ Aplicação web para gerenciamento de **departamentos** e **vendedores**, desenv
 - Página de erro customizada
 - Migrations aplicadas automaticamente na inicialização, com departamentos iniciais
 
+## Screenshots
+
+**Lista de vendedores**
+
+![Lista de vendedores](docs/screenshots/sellers.png)
+
+**Cadastro de vendedor**
+
+![Cadastro de vendedor](docs/screenshots/seller-create.png)
+
+**Departamentos**
+
+![Departamentos](docs/screenshots/departments.png)
+
 ## Como rodar com Docker
 
 Pré-requisito: [Docker](https://www.docker.com/) instalado.
