@@ -50,6 +50,12 @@ namespace MyProject.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(Seller seller)
         {
+            if (!ModelState.IsValid)
+            {
+                ViewBag.Departments = new SelectList(_departmentService.FindAll(), "Id", "Name");
+                return View(seller);
+            }
+
             _sellerService.Insert(seller);
             return RedirectToAction(nameof(Index));
         }
@@ -126,6 +132,11 @@ namespace MyProject.Controllers
             if (id != seller.Id)
             {
                 return RedirectToAction(nameof(Error), new { message = "Id mismatch"});
+            }
+            if (!ModelState.IsValid)
+            {
+                var viewModel = new SellerFormViewModel { Seller = seller, Departments = _departmentService.FindAll() };
+                return View(viewModel);
             }
             try
             {

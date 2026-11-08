@@ -16,7 +16,7 @@ namespace MyProject.Migrations
                 name: "Seller",
                 columns: table => new
                 {
-                    id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
@@ -28,7 +28,7 @@ namespace MyProject.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Seller", x => x.id);
+                    table.PrimaryKey("PK_Seller", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Seller_Department_DepartmentId",
                         column: x => x.DepartmentId,
@@ -56,7 +56,7 @@ namespace MyProject.Migrations
                         name: "FK_SalesREcord_Seller_SellerId",
                         column: x => x.SellerId,
                         principalTable: "Seller",
-                        principalColumn: "id",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");

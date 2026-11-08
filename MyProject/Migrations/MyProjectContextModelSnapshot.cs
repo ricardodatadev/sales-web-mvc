@@ -68,11 +68,11 @@ namespace MyProject.Migrations
 
             modelBuilder.Entity("MyProject.Models.Seller", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("id"));
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<double>("BaseSalary")
                         .HasColumnType("double");
@@ -89,9 +89,10 @@ namespace MyProject.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasMaxLength(60)
+                        .HasColumnType("varchar(60)");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
                     b.HasIndex("DepartmentId");
 

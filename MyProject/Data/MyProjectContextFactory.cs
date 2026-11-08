@@ -10,7 +10,7 @@ namespace MyProject.Data
         public MyProjectContext CreateDbContext(string[] args)
         {
 
-            Env.Load();
+            Env.TraversePath().Load();
       
             // Lê obrigatoriamente do .env
             var server = Environment.GetEnvironmentVariable("MYSQL_HOST")
@@ -27,7 +27,7 @@ namespace MyProject.Data
             var connectionString = $"Server={server};Port={port};Database={database};User={user};Password={password};";
 
             var optionsBuilder = new DbContextOptionsBuilder<MyProjectContext>();
-            optionsBuilder.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
+            optionsBuilder.UseMySql(connectionString, new MySqlServerVersion(new Version(8, 0)));
 
             return new MyProjectContext(optionsBuilder.Options);
         }

@@ -2,7 +2,6 @@ using MyProject.Data;
 using MyProject.Models;
 using Microsoft.EntityFrameworkCore;
 using MyProject.Services.Exceptions;
-using System.Data;
 
 namespace MyProject.Services
 {
@@ -51,7 +50,7 @@ namespace MyProject.Services
             }
             catch (DbUpdateConcurrencyException e)
             {
-                throw new DBConcurrencyException(e.Message);
+                throw new DbConcurrencyException(e.Message);
             }
         }
     }
